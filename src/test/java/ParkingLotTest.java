@@ -7,6 +7,7 @@ public class ParkingLotTest {
     public void returnNoOfEmptySpacesAs24AfterParkingOneCar() {
         Car car = new Car("Benz",12334);
         ParkingLot parkingLot = new ParkingLot(25);
+
         assertEquals(24,parkingLot.park(car));
     }
 
@@ -18,7 +19,15 @@ public class ParkingLotTest {
         ParkingLot parkingLot = new ParkingLot(2);
         parkingLot.park(car1);
         parkingLot.park(car2);
-        assertEquals(-1,parkingLot.park(car3));
 
+        assertEquals(-1,parkingLot.park(car3));
+    }
+
+    @Test
+    public void returnNoOfEmptySpacesAs25AfterUnParking() {
+        Car car = new Car("Benz",12334);
+        ParkingLot parkingLot = new ParkingLot(25);
+        parkingLot.park(car);
+        assertEquals(25,parkingLot.unPark(car));
     }
 }
