@@ -11,18 +11,21 @@ public class ParkingLot {
     }
 
     public int park(Car car) {
-        if(parkedCarList.size()< maxSpacesAvailable) {
+        if (parkedCarList.size() < maxSpacesAvailable) {
             parkedCarList.add(car);
             return maxSpacesAvailable - parkedCarList.size();
-        }
-        else return -1;
+        } else return -1;
     }
 
     public int unPark(Car car) {
-        for (int i = 0; i < parkedCarList.size(); i++) {
-            if(parkedCarList.get(i) == car) parkedCarList.remove(i);
+        if(parkedCarList.size() >0) {
+            for (int i = 0; i < parkedCarList.size(); i++) {
+                if (parkedCarList.get(i) == car) parkedCarList.remove(i);
+            }
+            return maxSpacesAvailable - parkedCarList.size();
         }
-        return maxSpacesAvailable - parkedCarList.size();
-
+        else{
+            return -1;
+        }
     }
 }
