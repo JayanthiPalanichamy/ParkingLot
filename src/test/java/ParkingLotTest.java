@@ -1,42 +1,55 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class ParkingLotTest {
+    Object car;
+    ParkingLot parkingLot1;
+    ParkingLot parkingLot2;
+    ParkingLotOwner parkingLotOwner;
+    @Before
+    public void setUp(){
+        car = new Object();
+        parkingLotOwner = new ParkingLotOwner();
+        parkingLot1 = new ParkingLot(2, parkingLotOwner);
+        parkingLot2 = new ParkingLot(2, parkingLotOwner);
+    }
     @Test
-    public void returnNoOfEmptySpacesAs24AfterParkingOneCar() {
-        Car car = new Car("Benz", 12334);
-        ParkingLot parkingLot = new ParkingLot(25);
+    public void returnParkingTicketAfterParkingOneCar() {
+        assertEquals(Object.class, parkingLot1.park(car).getClass());
+    }
 
-        assertEquals(24, parkingLot.park(car));
+    @Test(expected = FullParkingLot.class)
+    public void throwExceptionWhenTheParkingLotIsFull() {
+        Object car1 = new Object();
+        Object car2 = new Object();
+        Object car3 = new Object();
+
+        parkingLot2.park(car1);
+        parkingLot2.park(car2);
+        parkingLot2.park(car3);
     }
 
     @Test
-    public void returnMinus1WhenTheParkingLotIsFull() {
-        Car car1 = new Car("Benz", 12334);
-        Car car2 = new Car("Mercedes", 12336);
-        Car car3 = new Car("Ferrari", 12338);
-        ParkingLot parkingLot = new ParkingLot(2);
-        parkingLot.park(car1);
-        parkingLot.park(car2);
+    public void returnCarWhenTicketIsPassedToUnPark() {
+        Object ticket  = parkingLot1.park(car);
 
-        assertEquals(-1, parkingLot.park(car3));
+        assertEquals(car, parkingLot1.unPark(ticket));
     }
 
-    @Test
-    public void returnNoOfEmptySpacesAs25AfterUnParking() {
-        Car car = new Car("Benz", 12334);
-        ParkingLot parkingLot = new ParkingLot(25);
-        parkingLot.park(car);
-
-        assertEquals(25, parkingLot.unPark(car));
+    @Test(expected = EmptyParkingLot.class)
+    public void throwExceptionWhenEmptyParkingLotIsUnParked() {
+        Object ticket = parkingLot2.park(car);
+        parkingLot1.unPark(ticket);
     }
 
-    @Test
-    public void returnMinusOneWhenEmptyParkingLotIsUnparked() {
-        ParkingLot parkingLot = new ParkingLot(25);
-        Car car = new Car("Benz", 12334);
-
-        assertEquals(-1,parkingLot.unPark(car));
+    @Test(expected = CarNotFound.class)
+    public void throwExceptionWhenCarIsNotFound() {
+        parkingLot1.park(car);
+        Object car1 = new Object();
+        Object ticket1 = parkingLot2.park(car1);
+        parkingLot1.unPark(ticket1);
     }
+
 }
