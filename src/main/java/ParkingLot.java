@@ -11,7 +11,10 @@ public class ParkingLot {
     }
 
     public int park(Car car) {
-        parkedCarList.add(car);
-        return maxSpacesAvaliable - parkedCarList.size();
+        if(parkedCarList.size()<maxSpacesAvaliable) {
+            parkedCarList.add(car);
+            return maxSpacesAvaliable - parkedCarList.size();
+        }
+        else return -1;
     }
 }

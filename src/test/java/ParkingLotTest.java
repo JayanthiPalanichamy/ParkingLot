@@ -10,5 +10,15 @@ public class ParkingLotTest {
         assertEquals(24,parkingLot.park(car));
     }
 
+    @Test
+    public void returnMinus1WhenTheParkingLotIsFull() {
+        Car car1 = new Car("Benz",12334);
+        Car car2 = new Car("Mercedes",12336);
+        Car car3 = new Car("Ferrari",12338);
+        ParkingLot parkingLot = new ParkingLot(2);
+        parkingLot.park(car1);
+        parkingLot.park(car2);
+        assertEquals(-1,parkingLot.park(car3));
 
+    }
 }
