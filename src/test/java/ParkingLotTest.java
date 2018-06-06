@@ -8,13 +8,15 @@ public class ParkingLotTest {
     ParkingLot parkingLot1;
     ParkingLot parkingLot2;
     ParkingLotOwner parkingLotOwner;
+
     @Before
-    public void setUp(){
+    public void setUp() {
         car = new Object();
         parkingLotOwner = new ParkingLotOwner();
         parkingLot1 = new ParkingLot(2, parkingLotOwner);
         parkingLot2 = new ParkingLot(2, parkingLotOwner);
     }
+
     @Test
     public void returnParkingTicketAfterParkingOneCar() {
         assertEquals(Object.class, parkingLot1.park(car).getClass());
@@ -33,7 +35,7 @@ public class ParkingLotTest {
 
     @Test
     public void returnCarWhenTicketIsPassedToUnPark() {
-        Object ticket  = parkingLot1.park(car);
+        Object ticket = parkingLot1.park(car);
 
         assertEquals(car, parkingLot1.unPark(ticket));
     }

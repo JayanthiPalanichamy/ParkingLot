@@ -3,12 +3,13 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class ParkingLotAssistantTest {
+public class ParkingLotAttendantTest {
     Object car;
     ParkingLot parkingLot1;
     ParkingLot parkingLot2;
     ParkingLotAttendant parkingLotAttendant;
     ParkingLotOwner parkingLotOwner;
+    ParkingLotAssistant parkingLotAssistant;
 
     @Before
     public void setUp() {
@@ -16,7 +17,8 @@ public class ParkingLotAssistantTest {
         parkingLotOwner = new ParkingLotOwner();
         parkingLot1 = new ParkingLot(2, parkingLotOwner);
         parkingLot2 = new ParkingLot(2, parkingLotOwner);
-        parkingLotAttendant = new ParkingLotAttendant();
+        parkingLotAssistant= new ParkingLotAssistant();
+        parkingLotAttendant = new ParkingLotAttendant(parkingLotAssistant);
         parkingLotAttendant.addParkingLot(parkingLot1);
         parkingLotAttendant.addParkingLot(parkingLot2);
     }

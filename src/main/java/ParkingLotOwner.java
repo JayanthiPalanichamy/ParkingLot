@@ -8,9 +8,8 @@ public class ParkingLotOwner {
     }
 
     public boolean isNotified() {
-    return fullNotification;
+        return fullNotification;
     }
-
 
     public void sendNotification(String message) {
         fullNotification = true;

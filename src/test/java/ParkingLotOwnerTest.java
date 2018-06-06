@@ -5,9 +5,9 @@ import static junit.framework.TestCase.assertTrue;
 public class ParkingLotOwnerTest {
 
     @Test(expected = FullParkingLot.class)
-    public void returnTrueForIsNotifiedByOwnerWhenParkingLotIsFull(){
+    public void returnTrueForIsNotifiedByOwnerWhenParkingLotIsFull() {
         ParkingLotOwner parkingLotOwner = new ParkingLotOwner();
-        ParkingLot parkingLot = new ParkingLot(2,parkingLotOwner);
+        ParkingLot parkingLot = new ParkingLot(2, parkingLotOwner);
         Object car1 = new Object();
         Object car2 = new Object();
         Object car3 = new Object();
