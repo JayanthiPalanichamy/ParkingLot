@@ -63,4 +63,8 @@ public class ParkingLot {
     public int getAvailableSpaces() {
         return maxSpacesAvailable - parkedCarMap.size();
     }
+
+    public int capacity() {
+        return maxSpacesAvailable;
+    }
 }

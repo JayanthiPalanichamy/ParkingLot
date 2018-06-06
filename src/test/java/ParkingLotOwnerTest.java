@@ -16,7 +16,6 @@ public class ParkingLotOwnerTest {
         parkingLot.park(car2);
         parkingLot.park(car3);
 
-
         assertTrue(parkingLotOwner.isEmptyNotified());
     }
 }
