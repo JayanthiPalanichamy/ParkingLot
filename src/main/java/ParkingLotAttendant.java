@@ -26,6 +26,8 @@ public class ParkingLotAttendant {
     public Object unPark(Object ticket) {
         ParkingLot parkingLotWithCar = parkingLotList.stream().filter(parkingLot -> parkingLot.hasTicket(ticket)).findFirst().orElse(null);
         if (parkingLotWithCar == null) throw new CarNotFound("Cannot find your car anywhere");
-        return parkingLotWithCar.unPark(ticket);
+        Object car = parkingLotWithCar.unPark(ticket);
+        if(parkingLotWithCar.isEmpty()) parkingLotAssistant.sendEmptyNotification("The parking lot "+(parkingLotList.indexOf(parkingLotWithCar)+1)+" is empty");
+        return car;
     }
 }

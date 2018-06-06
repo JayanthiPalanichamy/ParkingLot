@@ -1,11 +1,13 @@
 public class ParkingLotAssistant {
     private boolean fullNotification;
+    private boolean emptyNotification;
 
     public ParkingLotAssistant() {
+        emptyNotification = false;
         fullNotification = false;
     }
 
-    public boolean isNotified() {
+    public boolean isFullNotified() {
         return fullNotification;
     }
 
@@ -14,4 +16,12 @@ public class ParkingLotAssistant {
         System.out.println(message);
     }
 
+    public boolean isEmptyNotified() {
+        return emptyNotification;
+    }
+
+    public void sendEmptyNotification(String message) {
+        emptyNotification = true;
+        System.out.println(message);
+    }
 }
