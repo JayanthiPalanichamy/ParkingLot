@@ -3,11 +3,11 @@ import java.util.HashMap;
 public class ParkingLot {
     private final int maxSpacesAvailable;
     private final ParkingLotOwner parkingLotOwner;
-    private HashMap<Object,Object> parkedCarMap;
+    private HashMap<Object, Object> parkedCarMap;
 
     public ParkingLot(int maxSpacesAvailable, ParkingLotOwner parkingLotOwner) {
         this.maxSpacesAvailable = maxSpacesAvailable;
-        this.parkingLotOwner = new ParkingLotOwner();
+        this.parkingLotOwner = parkingLotOwner;
         parkedCarMap = new HashMap<>();
     }
 
