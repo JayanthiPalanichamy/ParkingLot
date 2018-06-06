@@ -6,8 +6,9 @@ public class ParkingLotOwnerTest {
 
     @Test(expected = FullParkingLot.class)
     public void returnTrueForIsNotifiedByOwnerWhenParkingLotIsFull() {
-        ParkingLotOwner parkingLotOwner = new ParkingLotOwner();
-        ParkingLot parkingLot = new ParkingLot(2, parkingLotOwner);
+        Listener parkingLotOwner = new ParkingLotOwner();
+        ParkingLot parkingLot = new ParkingLot(2);
+        parkingLot.assignListener(parkingLotOwner);
         Object car1 = new Object();
         Object car2 = new Object();
         Object car3 = new Object();
@@ -16,6 +17,6 @@ public class ParkingLotOwnerTest {
         parkingLot.park(car3);
 
 
-        assertTrue(parkingLotOwner.isNotified());
+        assertTrue(parkingLotOwner.isEmptyNotified());
     }
 }

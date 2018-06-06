@@ -8,17 +8,13 @@ public class ParkingLotAttendantTest {
     ParkingLot parkingLot1;
     ParkingLot parkingLot2;
     ParkingLotAttendant parkingLotAttendant;
-    ParkingLotOwner parkingLotOwner;
-    ParkingLotAssistant parkingLotAssistant;
 
     @Before
     public void setUp() {
         car = new Object();
-        parkingLotOwner = new ParkingLotOwner();
-        parkingLot1 = new ParkingLot(2, parkingLotOwner);
-        parkingLot2 = new ParkingLot(2, parkingLotOwner);
-        parkingLotAssistant= new ParkingLotAssistant();
-        parkingLotAttendant = new ParkingLotAttendant(parkingLotAssistant);
+        parkingLot1 = new ParkingLot(2);
+        parkingLot2 = new ParkingLot(4);
+        parkingLotAttendant = new ParkingLotAttendant();
         parkingLotAttendant.addParkingLot(parkingLot1);
         parkingLotAttendant.addParkingLot(parkingLot2);
     }
@@ -56,5 +52,12 @@ public class ParkingLotAttendantTest {
         parkingLotAttendant.park(car3);
         parkingLotAttendant.park(car4);
         parkingLotAttendant.park(car5);
+    }
+
+    @Test
+    public void parkInTheFirstAvailableParkingLot(){
+        parkingLotAttendant.park(car);
+
+        assertEquals(1,parkingLot1.getAvailableSpaces());
     }
 }

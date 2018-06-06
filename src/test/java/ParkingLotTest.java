@@ -7,14 +7,12 @@ public class ParkingLotTest {
     Object car;
     ParkingLot parkingLot1;
     ParkingLot parkingLot2;
-    ParkingLotOwner parkingLotOwner;
 
     @Before
     public void setUp() {
         car = new Object();
-        parkingLotOwner = new ParkingLotOwner();
-        parkingLot1 = new ParkingLot(2, parkingLotOwner);
-        parkingLot2 = new ParkingLot(2, parkingLotOwner);
+        parkingLot1 = new ParkingLot(2);
+        parkingLot2 = new ParkingLot(2);
     }
 
     @Test

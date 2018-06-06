@@ -1,4 +1,6 @@
-public class ParkingLotAssistant {
+
+
+public class ParkingLotAssistant implements Listener {
     private boolean fullNotification;
     private boolean emptyNotification;
 

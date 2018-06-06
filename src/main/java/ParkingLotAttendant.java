@@ -1,12 +1,11 @@
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLotAttendant {
-    private final ParkingLotAssistant parkingLotAssistant;
     private List<ParkingLot> parkingLotList;
 
-    public ParkingLotAttendant(ParkingLotAssistant parkingLotAssistant) {
-        this.parkingLotAssistant = parkingLotAssistant;
+    public ParkingLotAttendant() {
         this.parkingLotList = new ArrayList<>();
     }
 
@@ -15,19 +14,14 @@ public class ParkingLotAttendant {
     }
 
     public Object park(Object car) throws ParkingLotException {
-        for (ParkingLot parkingLot : parkingLotList) {
-            if (!parkingLot.isNotFull())
-                parkingLotAssistant.sendFullNotification("Parking Lot " + (parkingLotList.indexOf(parkingLot) + 1) + " is full");
-            else return parkingLot.park(car);
-        }
-        throw new FullParkingLot("All the parking lotS are full");
+        ParkingLot parkingLot = parkingLotList.stream().filter(parking -> parking.isNotFull()).findFirst().orElse(null);
+        if (parkingLot == null) throw new FullParkingLot("All the parking lotS are full");
+        return parkingLot.park(car);
     }
 
     public Object unPark(Object ticket) {
-        ParkingLot parkingLotWithCar = parkingLotList.stream().filter(parkingLot -> parkingLot.hasTicket(ticket)).findFirst().orElse(null);
-        if (parkingLotWithCar == null) throw new CarNotFound("Cannot find your car anywhere");
-        Object car = parkingLotWithCar.unPark(ticket);
-        if(parkingLotWithCar.isEmpty()) parkingLotAssistant.sendEmptyNotification("The parking lot "+(parkingLotList.indexOf(parkingLotWithCar)+1)+" is empty");
-        return car;
+        ParkingLot parkingLot = parkingLotList.stream().filter(parking -> parking.hasTicket(ticket)).findFirst().orElse(null);
+        if (parkingLot == null) throw new CarNotFound("Cannot find your car anywhere");
+        return parkingLot.unPark(ticket);
     }
 }

@@ -1,18 +1,33 @@
 
 
-public class ParkingLotOwner {
+public class ParkingLotOwner implements Listener {
     private boolean fullNotification;
+    private boolean emptyNotification;
 
     public ParkingLotOwner() {
+        emptyNotification = false;
         fullNotification = false;
     }
 
-    public boolean isNotified() {
+    @Override
+    public boolean isFullNotified() {
         return fullNotification;
     }
 
-    public void sendNotification(String message) {
+    @Override
+    public void sendFullNotification(String message) {
         fullNotification = true;
+        System.out.println(message);
+    }
+
+    @Override
+    public boolean isEmptyNotified() {
+        return emptyNotification;
+    }
+
+    @Override
+    public void sendEmptyNotification(String message) {
+        emptyNotification = true;
         System.out.println(message);
     }
 }
