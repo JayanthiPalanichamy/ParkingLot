@@ -1,3 +1,5 @@
+package com.thoughtworks.iwp.listeners;
+
 public interface Listener {
     boolean isFullNotified();
 

@@ -1,3 +1,7 @@
+package com.thoughtworks.iwp;
+
+import com.thoughtworks.iwp.exception.FullParkingLot;
+import com.thoughtworks.iwp.listeners.ParkingLotAssistant;
 import org.junit.Before;
 import org.junit.Test;
 

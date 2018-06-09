@@ -1,3 +1,8 @@
+package com.thoughtworks.iwp;
+
+import com.thoughtworks.iwp.exception.FullParkingLot;
+import com.thoughtworks.iwp.listeners.Listener;
+import com.thoughtworks.iwp.listeners.ParkingLotOwner;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertTrue;

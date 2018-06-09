@@ -1,3 +1,12 @@
+package com.thoughtworks.iwp;
+
+import com.thoughtworks.iwp.exception.CarNotFound;
+import com.thoughtworks.iwp.exception.FullParkingLot;
+import com.thoughtworks.iwp.exception.ParkingLotException;
+import com.thoughtworks.iwp.parkCriteria.ParkCriteria;
+import com.thoughtworks.iwp.parkCriteria.ParkFirst;
+import com.thoughtworks.iwp.parkCriteria.ParkMaxAvailable;
+import com.thoughtworks.iwp.parkCriteria.ParkMaxCapacity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +37,7 @@ public class ParkingLotAttendant {
     }
 
     public Object park(Object car) throws ParkingLotException {
-        ParkingLot parkingLot =  parkCriteria.giveParkingLot(parkingLotList);
+        ParkingLot parkingLot = parkCriteria.giveParkingLot(parkingLotList);
         if (parkingLot == null) throw new FullParkingLot("All the parking lotS are full");
         return parkingLot.park(car);
     }

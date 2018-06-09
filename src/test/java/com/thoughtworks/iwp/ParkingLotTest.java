@@ -1,3 +1,8 @@
+package com.thoughtworks.iwp;
+
+import com.thoughtworks.iwp.exception.CarNotFound;
+import com.thoughtworks.iwp.exception.EmptyParkingLot;
+import com.thoughtworks.iwp.exception.FullParkingLot;
 import org.junit.Before;
 import org.junit.Test;
 

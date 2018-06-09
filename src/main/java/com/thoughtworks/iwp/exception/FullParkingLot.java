@@ -1,3 +1,4 @@
+package com.thoughtworks.iwp.exception;
 
 public class FullParkingLot extends ParkingLotException {
 
