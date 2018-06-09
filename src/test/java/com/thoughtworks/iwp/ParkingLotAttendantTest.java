@@ -20,7 +20,7 @@ public class ParkingLotAttendantTest {
         car4 = new Object();
         parkingLot1 = new ParkingLot(2);
         parkingLot2 = new ParkingLot(4);
-        parkingLotAttendant = new ParkingLotAttendant(Criteria.PARK_FIRST);
+        parkingLotAttendant = new ParkingLotAttendant(new ParkFirst());
         parkingLotAttendant.addParkingLot(parkingLot1);
         parkingLotAttendant.addParkingLot(parkingLot2);
     }

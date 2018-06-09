@@ -1,0 +1,1 @@
+Implementing a parking lot using design pattern such as Strategy pattern, Observer pattern,

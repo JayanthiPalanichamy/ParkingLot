@@ -3,24 +3,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParkingLotAttendant {
-    private final Criteria criteria;
+    private final ParkCriteria parkCriteria;
     private List<ParkingLot> parkingLotList;
 
-    public ParkingLotAttendant(Criteria criteria) {
-        this.criteria = criteria;
+    public ParkingLotAttendant(ParkCriteria parkCriteria) {
+        this.parkCriteria = parkCriteria;
         this.parkingLotList = new ArrayList<>();
     }
 
     public static ParkingLotAttendant createFirstPark() {
-        return new ParkingLotAttendant(Criteria.PARK_FIRST);
+        return new ParkingLotAttendant(new ParkFirst());
     }
 
     public static ParkingLotAttendant createMaxPark() {
-        return new ParkingLotAttendant(Criteria.PARK_MAX);
+        return new ParkingLotAttendant(new ParkMaxCapacity());
     }
 
     public static ParkingLotAttendant createAvailablePark() {
-        return new ParkingLotAttendant(Criteria.PARK_MAX_AVAILABLE);
+        return new ParkingLotAttendant(new ParkMaxAvailable());
     }
 
     public void addParkingLot(ParkingLot parkingLot) {
@@ -28,19 +28,9 @@ public class ParkingLotAttendant {
     }
 
     public Object park(Object car) throws ParkingLotException {
-        ParkCriteria parkCriteria = selectCriteria(criteria);
         ParkingLot parkingLot =  parkCriteria.giveParkingLot(parkingLotList);
         if (parkingLot == null) throw new FullParkingLot("All the parking lotS are full");
         return parkingLot.park(car);
-    }
-
-    private ParkCriteria selectCriteria(Criteria criteria) {
-        switch (criteria){
-            case PARK_FIRST: return new ParkFirst();
-            case PARK_MAX: return new ParkMaxCapacity();
-            case PARK_MAX_AVAILABLE: return new ParkMaxAvailable();
-            default: return new ParkFirst();
-        }
     }
 
     public Object unPark(Object ticket) {
